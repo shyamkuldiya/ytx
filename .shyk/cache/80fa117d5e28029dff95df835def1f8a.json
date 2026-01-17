@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "timestamp": 1768548864111,
+  "timestamp": 1768576302206,
   "data": {
     "filePath": "/Users/shyam/Documents/backend/ytx-backend/src/models/user.model.js",
     "imports": [
@@ -51,6 +51,6 @@
         "endLine": 52
       }
     ],
-    "lastModified": 1768548864110
+    "lastModified": 1768576302025
   }
 }

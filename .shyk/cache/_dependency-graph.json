@@ -45,6 +45,14 @@
       }
     ],
     [
+      "/Users/shyam/Documents/backend/ytx-backend/src/middlewares/multer.middleware.js",
+      {
+        "filePath": "/Users/shyam/Documents/backend/ytx-backend/src/middlewares/multer.middleware.js",
+        "dependencies": [],
+        "dependents": []
+      }
+    ],
+    [
       "/Users/shyam/Documents/backend/ytx-backend/src/models/user.model.js",
       {
         "filePath": "/Users/shyam/Documents/backend/ytx-backend/src/models/user.model.js",
@@ -56,6 +64,14 @@
       "/Users/shyam/Documents/backend/ytx-backend/src/models/video.model.js",
       {
         "filePath": "/Users/shyam/Documents/backend/ytx-backend/src/models/video.model.js",
+        "dependencies": [],
+        "dependents": []
+      }
+    ],
+    [
+      "/Users/shyam/Documents/backend/ytx-backend/src/routes/cloudinary.js",
+      {
+        "filePath": "/Users/shyam/Documents/backend/ytx-backend/src/routes/cloudinary.js",
         "dependencies": [],
         "dependents": []
       }
@@ -85,5 +101,5 @@
       }
     ]
   ],
-  "timestamp": 1768548857622
+  "timestamp": 1768576302207
 }

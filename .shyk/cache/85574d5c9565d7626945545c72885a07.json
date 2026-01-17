@@ -1,0 +1,24 @@
+{
+  "version": "0.1.0",
+  "timestamp": 1768576305158,
+  "data": {
+    "filePath": "/Users/shyam/Documents/backend/ytx-backend/src/middlewares/multer.middleware.js",
+    "imports": [
+      {
+        "source": "multer",
+        "isExternal": true,
+        "specifiers": [
+          "multer"
+        ]
+      }
+    ],
+    "exports": [],
+    "functions": [],
+    "routes": [],
+    "middleware": [],
+    "envVars": [],
+    "errorHandling": [],
+    "validations": [],
+    "lastModified": 1768576305156
+  }
+}
