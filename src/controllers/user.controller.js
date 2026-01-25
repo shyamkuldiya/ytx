@@ -3,30 +3,47 @@ import { ApiError } from "../utils/api-error.js";
 import { User } from "../models/user.model.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/api-response.js";
+import fs from "fs";
 
 export const registerUser = asyncHandler(async (req, res) => {
-  // get All the fields from the client
-  // check if all exists
-  // check if there is already an user with exisiting email or usernam
-  // upload avatar and banner to cloudinary
-  // return the response
   const { fullName, username, email, password } = req.body;
 
-  // [name,username,email,password].some(e>e.trim()===""){
   if (!fullName || !username || !email || !password) {
     throw new ApiError(400, "All fields are required");
   }
 
-  const exisitingUser = User.findOne({
+  const exisitingUser = await User.findOne({
     $or: [{ username }, { email }],
   });
 
-  if (exisitingUser) {
-    throw new ApiError(409, "User already exists");
+  let avatarLocalPath;
+  let coverImageLocalPath;
+
+  if (
+    req.files &&
+    Array.isArray(req.files.avatar) &&
+    req.files.avatar.length > 0
+  ) {
+    avatarLocalPath = req.files?.avatar[0]?.path;
   }
 
-  const avatarLocalPath = req.files?.avatar[0]?.path;
-  const coverImageLocalPath = req.files?.coverImage[0]?.path;
+  if (
+    req.files &&
+    Array.isArray(req.files.coverImage) &&
+    req.files.coverImage.length > 0
+  ) {
+    coverImageLocalPath = req.files.coverImage[0].path;
+  }
+
+  if (exisitingUser) {
+    if (avatarLocalPath) {
+      fs.unlinkSync(avatarLocalPath);
+    }
+    if (coverImageLocalPath) {
+      fs.unlinkSync(coverImageLocalPath);
+    }
+    throw new ApiError(409, "User already exists");
+  }
 
   if (!avatarLocalPath) {
     throw new ApiError(400, "Avatar file is required");
@@ -52,7 +69,7 @@ export const registerUser = asyncHandler(async (req, res) => {
     "-password -refreshToken",
   );
 
-  if (createdUser) {
+  if (!createdUser) {
     throw new ApiError(500, "Somethign went wrong while registering the user");
   }
 
